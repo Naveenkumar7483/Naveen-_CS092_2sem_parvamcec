@@ -1,39 +1,59 @@
-#include<iostrem>
+#include <iostream>
 using namespace std;
-class person{
+
+class Person
+{
     string name;
     int age;
-    public:
-    person(string name,int age):name(name),age(age){
 
+public:
+    Person(string name, int age) : name(name), age(age)
+    {
     }
     void display_person()
     {
-        cout<<"name:"<<name<<endl;
-        cout<<"age:"<<age<<endl;
+        cout << "Name: " << name << endl;
+        cout << "Age: " << age << endl;
+    }
+};
 
+class Student : public Person
+{
+    int roll_num;
+
+public:
+    Student(string name, int age, int roll_num) : Person(name, age), roll_num(roll_num)
+    {
     }
 
+    void display_student()
+    {
+        cout << "Student Details: " << endl;
+        display_person();
+        cout << "Roll Number: " << roll_num << endl;
+    }
 };
 
-class student:public person
+class Teacher : public Person
 {
-int roll_num;
+    int salary;
+
 public:
-student(string name, int age, int roll_num):person(name,age),salary(salary)
-{
-}
-void display_teacher()
-{
-    cout<<"teacher details:"<<endl;
-    display_person();
-    cout<<"salary:"<<salary<<endl;
-}
+    Teacher(string name, int age, int salary) : Person(name, age), salary(salary)
+    {
+    }
+    void display_teacher()
+    {
+        cout << "Teacher Details: " << endl;
+        display_person();
+        cout << "Salary: " << salary << endl;
+    }
 };
+
 int main()
 {
-    teacher t1("pavan",23,20000);
+    Teacher t1("Pavan", 23, 20000);
     t1.display_teacher();
-    student s1("vinith",18,102);
+    Student s1("Vinith", 18, 102);
     s1.display_student();
 }
